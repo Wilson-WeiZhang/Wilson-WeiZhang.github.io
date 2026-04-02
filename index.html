@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wei Zhang | Neuroscience & AI Researcher</title>
+    <meta name="description" content="Wei Zhang (Wilson) - Research Fellow at NTU, specializing in multimodal neuroimaging, covert speech decoding, and brain-computer interfaces.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --serif: 'Source Serif 4', Georgia, serif;
+            --sans: 'DM Sans', -apple-system, sans-serif;
+            --bg: #FAFAF8;
+            --surface: #FFFFFF;
+            --text: #1a1a1a;
+            --text-secondary: #555;
+            --text-tertiary: #888;
+            --accent: #2563EB;
+            --accent-light: #EFF6FF;
+            --border: #E5E5E0;
+            --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+            --radius: 8px;
+            --max-w: 960px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250,250,248,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        nav .nav-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
+        }
+        nav .nav-name {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--text);
+            text-decoration: none;
+        }
+        nav .nav-links { display: flex; gap: 24px; }
+        nav .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            transition: color 0.2s;
+        }
+        nav .nav-links a:hover { color: var(--accent); }
+
+        /* ── HERO ── */
+        .hero {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 64px 24px 48px;
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        .avatar-col { text-align: center; }
+        .avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border);
+            background: #ddd;
+        }
+        .avatar-placeholder {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--serif);
+            font-size: 48px;
+            font-weight: 300;
+            margin: 0 auto;
+        }
+        .social-icons {
+            margin-top: 16px;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+        .social-icons a {
+            color: var(--text-tertiary);
+            font-size: 18px;
+            transition: color 0.2s;
+        }
+        .social-icons a:hover { color: var(--accent); }
+
+        .bio-col h1 {
+            font-family: var(--serif);
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+        .bio-col .subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+        .bio-col .affiliation {
+            font-size: 14px;
+            color: var(--text-tertiary);
+            margin-bottom: 20px;
+        }
+        .bio-col .affiliation a {
+            color: var(--text-tertiary);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--text-tertiary);
+        }
+        .bio-text {
+            font-size: 15px;
+            line-height: 1.75;
+            color: var(--text-secondary);
+        }
+        .bio-text p { margin-bottom: 12px; }
+
+        .research-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        .research-tags span {
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            font-weight: 500;
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+        section + section { padding-top: 0; }
+
+        .section-title {
+            font-family: var(--serif);
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--text);
+            display: inline-block;
+        }
+
+        /* ── EDUCATION ── */
+        .education-list { list-style: none; }
+        .education-list li {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 16px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .education-list li:last-child { border-bottom: none; }
+        .edu-year {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            font-weight: 500;
+            padding-top: 2px;
+        }
+        .edu-detail h3 {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .edu-detail p {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+        }
+        .edu-detail .awards {
+            font-size: 12.5px;
+            color: var(--accent);
+            margin-top: 2px;
+        }
+
+        /* ── PUBLICATIONS ── */
+        .pub-list { list-style: none; }
+        .pub-list li {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .pub-list li:last-child { border-bottom: none; }
+        .pub-title {
+            font-family: var(--serif);
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 4px;
+        }
+        .pub-authors {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+        .pub-authors .me { font-weight: 700; color: var(--text); }
+        .pub-venue {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            font-style: italic;
+        }
+        .pub-venue .year { font-style: normal; font-weight: 600; }
+        .pub-links {
+            margin-top: 6px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .pub-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 10px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 11.5px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .pub-links a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-light);
+        }
+        .pub-section-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 24px;
+            margin-bottom: 8px;
+        }
+
+        /* ── FEATURED PUBS ── */
+        .featured-pubs { display: flex; flex-direction: column; gap: 20px; }
+        .featured-pub {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 20px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .featured-pub:last-child { border-bottom: none; }
+        .featured-thumb {
+            width: 160px;
+            height: 100px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .featured-info { min-width: 0; }
+        .pub-blurb {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+        @media (max-width: 700px) {
+            .featured-pub { grid-template-columns: 1fr; }
+            .featured-thumb { width: 100%; height: 80px; }
+        }
+
+        /* ── PROJECTS ── */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: box-shadow 0.25s, transform 0.25s;
+        }
+        .project-card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+        .project-card h3 {
+            font-family: var(--serif);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .project-card .project-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .project-card .project-tags span {
+            font-size: 11px;
+            padding: 2px 8px;
+            background: #f0f0ee;
+            border-radius: 3px;
+            color: var(--text-tertiary);
+            font-weight: 500;
+        }
+        .project-card p {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .project-status {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 11.5px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 3px;
+        }
+        .status-active { background: #ECFDF5; color: #059669; }
+        .status-writing { background: #FFF7ED; color: #C2410C; }
+        .status-design { background: #EFF6FF; color: #2563EB; }
+
+        /* ── EXPERIENCE ── */
+        .timeline { list-style: none; position: relative; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 49px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: var(--border);
+        }
+        .timeline li {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 16px;
+            padding: 12px 0;
+            position: relative;
+        }
+        .timeline .dot {
+            position: absolute;
+            left: 44px;
+            top: 18px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 2px solid var(--accent);
+        }
+
+        /* ── CONTACT ── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .contact-item i {
+            color: var(--accent);
+            font-size: 18px;
+            margin-top: 2px;
+        }
+        .contact-item .label {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-weight: 600;
+        }
+        .contact-item .value {
+            font-size: 14px;
+            color: var(--text);
+        }
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 32px 24px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-tertiary);
+            border-top: 1px solid var(--border);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 700px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 24px;
+                padding: 40px 20px 32px;
+            }
+            .bio-col h1 { font-size: 26px; }
+            .research-tags { justify-content: center; }
+            .education-list li { grid-template-columns: 1fr; gap: 4px; }
+            nav .nav-links { gap: 14px; }
+            nav .nav-links a { font-size: 12.5px; }
+            .project-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero, section { animation: fadeUp 0.5s ease both; }
+        section:nth-child(3) { animation-delay: 0.05s; }
+        section:nth-child(4) { animation-delay: 0.1s; }
+        section:nth-child(5) { animation-delay: 0.15s; }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-name">Wei Zhang</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#publications">Publications</a>
+            <a href="#projects">Research</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+            <a href="assets/CV_WeiZhang.pdf" target="_blank">CV</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="about">
+    <div class="avatar-col">
+        <img class="avatar" src="assets/photo.jpg" alt="Wei Zhang">
+        <div class="social-icons">
+            <a href="mailto:weizhang2022@outlook.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://scholar.google.com/citations?user=Kqc41x4AAAAJ" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://github.com/Wilson-WeiZhang" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://orcid.org/0009-0008-6794-4811" target="_blank" title="ORCID"><i class="fab fa-orcid"></i></a>
+        </div>
+    </div>
+    <div class="bio-col">
+        <h1>Wei Zhang <span style="font-weight:300; font-size:22px; color:var(--text-tertiary);">(张维)</span></h1>
+        <div class="subtitle">Research Fellow</div>
+        <div class="affiliation">
+            <a href="https://www.ntu.edu.sg/medicine" target="_blank">Lee Kong Chian School of Medicine</a>, Nanyang Technological University
+        </div>
+        <div class="bio-text">
+            <p>
+                I am a research fellow at NTU, working at the intersection of <strong>neuroscience</strong>, <strong>AI</strong>, and <strong>brain-computer interfaces</strong>. My research focuses on understanding the spatiotemporal neural dynamics of human cognition using multimodal neuroimaging (EEG, fMRI, MEG, PET), and translating these insights into non-invasive speech decoding BCIs.
+            </p>
+            <p>
+                I received my PhD from the University of Chinese Academy of Sciences (Institute of High Energy Physics) in medical imaging, and my BS in Engineering Physics from Tsinghua University. My academic path bridges engineering, medical imaging, and cognitive neuroscience.
+            </p>
+        </div>
+        <div class="research-tags">
+            <span>Multimodal Neuroimaging</span>
+            <span>Covert Speech Decoding</span>
+            <span>Brain-Computer Interfaces</span>
+            <span>EEG-fMRI Integration</span>
+            <span>AI for Neuroscience</span>
+            <span>Infant Brain Development</span>
+        </div>
+    </div>
+</div>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+    <h2 class="section-title">Selected Publications</h2>
+
+    <div class="pub-section-label">Featured Work</div>
+    <div class="featured-pubs">
+        <div class="featured-pub">
+            <div class="featured-thumb" style="background:#E8EEF6;">
+                <span style="font-size:11px; color:var(--text-tertiary);">Fig placeholder</span>
+            </div>
+            <div class="featured-info">
+                <div class="pub-title">Revealing the spatiotemporal brain dynamics of covert speech compared with overt speech: A simultaneous EEG-fMRI study</div>
+                <div class="pub-blurb">First non-invasive replication of ventral sensorimotor cortex targets previously only achievable with invasive ECoG.</div>
+                <div class="pub-authors"><span class="me">W. Zhang</span>, M. Jiang, F. Chen, N.T.B. Koh, G. Xu, S.H. Annabel Chen</div>
+                <div class="pub-venue"><em>NeuroImage</em>, <span class="year">2024</span></div>
+                <div class="pub-links">
+                    <a href="#"><i class="fas fa-file-pdf"></i> PDF</a>
+                    <a href="https://doi.org/10.1016/j.neuroimage.2024.120611" target="_blank"><i class="fas fa-link"></i> DOI</a>
+                </div>
+            </div>
+        </div>
+        <div class="featured-pub">
+            <div class="featured-thumb" style="background:#EDE8F0;">
+                <span style="font-size:11px; color:var(--text-tertiary);">Fig placeholder</span>
+            </div>
+            <div class="featured-info">
+                <div class="pub-title">Contrastive graph pooling for explainable classification of brain networks</div>
+                <div class="pub-blurb">Explainable GNN method for brain network classification with contrastive learning. Most-cited work (53+ citations).</div>
+                <div class="pub-authors">J. Xu, <span class="me">W. Zhang</span>, et al.</div>
+                <div class="pub-venue"><em>IEEE Transactions on Medical Imaging</em>, <span class="year">2024</span></div>
+                <div class="pub-links">
+                    <a href="#"><i class="fas fa-file-pdf"></i> PDF</a>
+                    <a href="#"><i class="fas fa-code"></i> Code</a>
+                    <a href="#"><i class="fas fa-link"></i> DOI</a>
+                </div>
+            </div>
+        </div>
+        <div class="featured-pub">
+            <div class="featured-thumb" style="background:#E6F0E8;">
+                <span style="font-size:11px; color:var(--text-tertiary);">Fig placeholder</span>
+            </div>
+            <div class="featured-info">
+                <div class="pub-title">Deep learning with <sup>18</sup>F-FDG-PET gives valid diagnoses for the uncertain cases in memory impairment of AD</div>
+                <div class="pub-blurb">Deep learning on FDG-PET resolves clinically uncertain Alzheimer's cases that conventional reads cannot classify.</div>
+                <div class="pub-authors"><span class="me">W. Zhang</span>, B. Shan, et al.</div>
+                <div class="pub-venue"><em>Frontiers in Aging Neuroscience</em>, <span class="year">2021</span></div>
+                <div class="pub-links">
+                    <a href="#"><i class="fas fa-file-pdf"></i> PDF</a>
+                    <a href="#"><i class="fas fa-link"></i> DOI</a>
+                </div>
+            </div>
+        </div>
+        <div class="featured-pub">
+            <div class="featured-thumb" style="background:#FFF3E6;">
+                <span style="font-size:11px; color:var(--text-tertiary);">Fig placeholder</span>
+            </div>
+            <div class="featured-info">
+                <div class="pub-title">ELASTIQ: EEG-Language Alignment with Semantic Task Instruction and Querying</div>
+                <div class="pub-blurb">Aligning EEG representations with language models via task-instructed contrastive learning.</div>
+                <div class="pub-authors">M. Jiang, <span class="me">W. Zhang</span>, et al.</div>
+                <div class="pub-venue"><em>arXiv preprint</em>, <span class="year">2025</span></div>
+                <div class="pub-links">
+                    <a href="#"><i class="fas fa-file-pdf"></i> PDF</a>
+                    <a href="#"><i class="fas fa-code"></i> Code</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pub-section-label" style="margin-top:32px;">Other Publications</div>
+    <ul class="pub-list">
+        <li>
+            <div class="pub-title">Investigating sea-level brain predictors for acute mountain sickness: A multimodal MRI study</div>
+            <div class="pub-authors"><span class="me">W. Zhang</span>, et al.</div>
+            <div class="pub-venue"><em>American Journal of Neuroradiology</em>, <span class="year">2024</span></div>
+        </li>
+        <li>
+            <div class="pub-title">Multi-atlas brain network classification through consistency distillation and complementary information fusion</div>
+            <div class="pub-authors">J. Xu, <span class="me">W. Zhang</span>, et al.</div>
+            <div class="pub-venue"><em>IEEE Journal of Biomedical and Health Informatics</em>, <span class="year">2025</span></div>
+        </li>
+        <li>
+            <div class="pub-title">Decoding covert speech from EEG using a functional areas spatio-temporal transformer</div>
+            <div class="pub-authors">M. Jiang, <span class="me">W. Zhang</span>, et al.</div>
+            <div class="pub-venue"><em>arXiv preprint</em>, <span class="year">2025</span></div>
+        </li>
+    </ul>
+
+    <p style="margin-top: 20px; font-size: 13.5px; color: var(--text-tertiary);">
+        Full list: <a href="https://scholar.google.com/citations?user=Kqc41x4AAAAJ" target="_blank" style="color: var(--accent);">Google Scholar</a>
+        &middot; 20 publications &middot; 212+ citations &middot; h-index: 9
+    </p>
+</section>
+
+<!-- RESEARCH PROJECTS -->
+<section id="projects">
+    <h2 class="section-title">Research</h2>
+    <div class="project-grid">
+        <div class="project-card">
+            <h3>Covert Speech Decoding</h3>
+            <div class="project-tags">
+                <span>EEG-fMRI</span><span>BCI</span><span>Source Localization</span>
+            </div>
+            <p>Non-invasive decoding of imagined speech using simultaneous EEG-fMRI. Successfully replicated ventral sensorimotor cortex targets previously only achievable with invasive ECoG.</p>
+            <span class="project-status status-writing">Writing</span>
+        </div>
+        <div class="project-card">
+            <h3>STARS-LLM: Mother-Infant Neural Coupling</h3>
+            <div class="project-tags">
+                <span>Dual-Brain EEG</span><span>LLM</span><span>Multimodal</span>
+            </div>
+            <p>Dual-agent LLM framework modeling mother-infant neural coupling with "dual-layer emergence" &mdash; cross-brain GPDC prediction emerging into ASD risk detection.</p>
+            <span class="project-status status-active">In Progress</span>
+        </div>
+        <div class="project-card">
+            <h3>MEG + LLM Alignment</h3>
+            <div class="project-tags">
+                <span>MEG</span><span>LLM</span><span>RSA</span>
+            </div>
+            <p>Testing the "Context Sweet Spot" hypothesis: brain-LLM representational alignment peaks at intermediate context lengths during natural conversation.</p>
+            <span class="project-status status-design">Experiment Design</span>
+        </div>
+        <div class="project-card">
+            <h3>Infant Statistical Learning (BABBLE)</h3>
+            <div class="project-tags">
+                <span>Dual-Brain EEG</span><span>Infants</span><span>Social Gaze</span>
+            </div>
+            <p>Direct gaze gates infant statistical learning via adult-infant neural coupling (AINC). 47 infants, dual-centre (UK + Singapore), OHBM 2025.</p>
+            <span class="project-status status-writing">Writing</span>
+        </div>
+        <div class="project-card">
+            <h3>EEG Gait Decoding</h3>
+            <div class="project-tags">
+                <span>EEG</span><span>Motor</span><span>Deep Learning</span>
+            </div>
+            <p>Decoding gait patterns from scalp EEG for rehabilitation applications.</p>
+            <span class="project-status status-active">In Progress</span>
+        </div>
+        <div class="project-card">
+            <h3>Brain Graph Neural Networks</h3>
+            <div class="project-tags">
+                <span>fMRI</span><span>GNN</span><span>Explainability</span>
+            </div>
+            <p>Contrastive graph pooling and multi-atlas fusion methods for explainable brain network classification. Published in IEEE TMI and JBHI.</p>
+            <span class="project-status status-active">Active</span>
+        </div>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+    <h2 class="section-title">Education & Experience</h2>
+    <ul class="education-list">
+        <li>
+            <div class="edu-year">2022 &ndash; now</div>
+            <div class="edu-detail">
+                <h3>Research Fellow &middot; Nanyang Technological University</h3>
+                <p>Lee Kong Chian School of Medicine, Singapore</p>
+                <p>Multimodal neuroimaging, covert speech BCI, infant brain development</p>
+            </div>
+        </li>
+        <li>
+            <div class="edu-year">2017 &ndash; 2022</div>
+            <div class="edu-detail">
+                <h3>Ph.D. in Medical Imaging &middot; University of Chinese Academy of Sciences</h3>
+                <p>Institute of High Energy Physics &middot; Advisor: Prof. Baoci Shan</p>
+                <p>PET/MRI brain imaging, deep learning for neurodegeneration diagnosis</p>
+                <div class="awards">National Scholarship (2018-2021) &middot; Dean's Award Top 1 (2022) &middot; Zhu Liyuehua Outstanding Doctoral Award Top 1 (2022)</div>
+            </div>
+        </li>
+        <li>
+            <div class="edu-year">2013 &ndash; 2017</div>
+            <div class="edu-detail">
+                <h3>B.S. in Engineering Physics &middot; Tsinghua University</h3>
+                <p>Beijing, China</p>
+                <div class="awards">Top Talent Program (2013)</div>
+            </div>
+        </li>
+    </ul>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+    <h2 class="section-title">Professional Services</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+        <div>
+            <div style="font-weight:600; font-size:13px; color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:10px;">Teaching</div>
+            <ul style="list-style:none; font-size:14px; color:var(--text-secondary); line-height:2;">
+                <li><i class="fas fa-chalkboard-teacher" style="color:var(--accent); width:20px; margin-right:6px;"></i> Guest Lecturer, HP4021 Advanced Neuroscience Seminar, NTU</li>
+            </ul>
+        </div>
+        <div>
+            <div style="font-weight:600; font-size:13px; color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:10px;">Membership</div>
+            <ul style="list-style:none; font-size:14px; color:var(--text-secondary); line-height:2;">
+                <li><i class="fas fa-id-badge" style="color:var(--accent); width:20px; margin-right:6px;"></i> American Society of Neuroradiology (ASNR)</li>
+            </ul>
+        </div>
+        <div>
+            <div style="font-weight:600; font-size:13px; color:var(--text-tertiary); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:10px;">Journal Reviewer</div>
+            <ul style="list-style:none; font-size:14px; color:var(--text-secondary); line-height:2;">
+                <li>NeuroImage</li>
+                <li>Imaging Neuroscience</li>
+                <li>Frontiers in Human Neuroscience</li>
+                <li>Signal, Image and Video Processing</li>
+                <li>Scientific Reports</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid">
+        <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+                <div class="label">Email</div>
+                <div class="value"><a href="mailto:weizhang2022@outlook.com">weizhang2022@outlook.com</a></div>
+            </div>
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+                <div class="label">Location</div>
+                <div class="value">Lee Kong Chian School of Medicine<br>Nanyang Technological University<br>Singapore</div>
+            </div>
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-graduation-cap"></i>
+            <div>
+                <div class="label">Google Scholar</div>
+                <div class="value"><a href="https://scholar.google.com/citations?user=Kqc41x4AAAAJ" target="_blank">Wei Zhang</a></div>
+            </div>
+        </div>
+        <div class="contact-item">
+            <i class="fab fa-github"></i>
+            <div>
+                <div class="label">GitHub</div>
+                <div class="value"><a href="https://github.com/Wilson-WeiZhang" target="_blank">Wilson-WeiZhang</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    &copy; 2026 Wei Zhang. Last updated April 2026.
+</footer>
+
+</body>
+</html>
