@@ -221,7 +221,7 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 0;
-            padding: 20px 0;
+            padding: 12px 0;
             border-bottom: 1px solid var(--border-light);
             transition: background var(--transition);
         }
@@ -229,11 +229,11 @@
 
         .feat-pub .pub-title {
             font-family: var(--serif);
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 600;
-            line-height: 1.45;
+            line-height: 1.4;
             color: var(--text);
-            margin-bottom: 5px;
+            margin-bottom: 3px;
             letter-spacing: -0.01em;
         }
         .feat-pub .pub-meta {
@@ -252,17 +252,10 @@
             font-weight: 700;
             color: var(--accent);
         }
-        .feat-pub .pub-blurb {
-            font-size: 13px;
-            color: var(--text-3);
-            margin-top: 6px;
-            line-height: 1.55;
-            font-style: italic;
-        }
         .pub-badges {
             display: flex;
             gap: 6px;
-            margin-top: 8px;
+            margin-top: 6px;
             flex-wrap: wrap;
         }
         .pub-badges a {
@@ -295,35 +288,80 @@
         /* ── RESEARCH ── */
         .research-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
         }
         .r-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 22px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
             transition: all var(--transition);
-            position: relative;
         }
         .r-card:hover {
             box-shadow: var(--shadow);
-            border-color: var(--border-light);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+        }
+        .r-fig {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 4 / 3;
+            background: #fff;
+            border-bottom: 1px solid var(--border-light);
+            padding: 10px;
+        }
+        .r-fig img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .r-fig.r-wip {
+            background: linear-gradient(150deg, var(--accent) 0%, #0E1B33 100%);
+            color: #fff;
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
+        .r-wip i { font-size: 34px; color: var(--accent-warm); }
+        .r-wip span {
+            font-family: var(--serif);
+            font-size: 20px;
+            font-style: italic;
+            opacity: 0.9;
+        }
+        .r-body {
+            padding: 18px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .r-venue {
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--accent-warm);
+            margin-bottom: 6px;
         }
         .r-card h3 {
             font-family: var(--serif);
-            font-size: 17px;
+            font-size: 19px;
             font-weight: 600;
             margin-bottom: 8px;
-            line-height: 1.35;
+            line-height: 1.3;
             letter-spacing: -0.01em;
         }
+        .r-card h3 a { color: inherit; text-decoration: none; }
+        .r-card h3 a:hover { color: var(--accent); }
         .r-card .r-tags {
             display: flex;
             gap: 4px;
             flex-wrap: wrap;
-            margin-bottom: 10px;
+            margin-top: auto;
+            padding-top: 12px;
         }
         .r-card .r-tags span {
             font-size: 10.5px;
@@ -352,17 +390,6 @@
         .st-active { background: #E8F5E9; color: #2E7D32; }
         .st-writing { background: #FFF3E0; color: #BF360C; }
         .st-design { background: var(--accent-light); color: var(--accent); }
-        .r-paper {
-            display: inline-block;
-            margin-top: 12px;
-            font-size: 10.5px;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 2px;
-            letter-spacing: 0.02em;
-            background: var(--accent-light);
-            color: var(--accent);
-        }
 
         /* ── EDUCATION ── */
         .edu-list { list-style: none; }
@@ -519,8 +546,8 @@
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
             <a href="#education">Education</a>
-            <a href="#publications">Publications</a>
             <a href="#projects">Research</a>
+            <a href="#publications">Publications</a>
             <a href="#services">Services</a>
             <a href="assets/CV_WeiZhang.pdf" target="_blank">CV</a>
         </div>
@@ -616,6 +643,93 @@
     </ul>
 </section>
 
+<section id="projects" class="reveal">
+    <div class="sec-head"><h2>Research</h2></div>
+    <div class="research-grid">
+        <article class="r-card">
+            <a class="r-fig" href="https://doi.org/10.1038/s41467-026-75831-x" target="_blank"><img src="assets/research/2026_nc_fig1.webp" alt="Study design figure: Adult-to-infant neural coupling in social learning" loading="lazy"></a>
+            <div class="r-body">
+                <div class="r-venue">Nature Communications &middot; 2026</div>
+                <h3><a href="https://doi.org/10.1038/s41467-026-75831-x" target="_blank">Adult-to-infant neural coupling in social learning</a></h3>
+                <p>Dual-brain EEG in UK and Singapore infants: unidirectional adult-to-infant coupling, modulated by eye contact, mediates selective learning of an artificial language.</p>
+                <div class="r-tags"><span>Dual-Brain EEG</span><span>Infants</span><span>Social Gaze</span></div>
+            </div>
+        </article>
+        <article class="r-card">
+            <a class="r-fig" href="https://doi.org/10.1038/s42003-026-11102-1" target="_blank"><img src="assets/research/2026_cb_fig1.webp" alt="Study design figure: Spatiotemporal encoding of covert speech" loading="lazy"></a>
+            <div class="r-body">
+                <div class="r-venue">Communications Biology &middot; 2026</div>
+                <h3><a href="https://doi.org/10.1038/s42003-026-11102-1" target="_blank">Spatiotemporal encoding of covert speech</a></h3>
+                <p>Source-localized EEG with same-cohort fMRI validation maps where and when cortex encodes covert phrases, converging on left sensorimotor cortex.</p>
+                <div class="r-tags"><span>Source EEG</span><span>fMRI</span><span>RSA</span></div>
+            </div>
+        </article>
+        <article class="r-card">
+            <a class="r-fig" href="https://doi.org/10.1016/j.neuroimage.2024.120629" target="_blank"><img src="assets/research/2024_neuroimage_fig1.webp" alt="Study design figure: Covert vs overt speech in simultaneous EEG-fMRI" loading="lazy"></a>
+            <div class="r-body">
+                <div class="r-venue">NeuroImage &middot; 2024</div>
+                <h3><a href="https://doi.org/10.1016/j.neuroimage.2024.120629" target="_blank">Covert vs overt speech in simultaneous EEG-fMRI</a></h3>
+                <p>Simultaneous EEG-fMRI shows covert speech engages the left putamen earlier than overt speech, with weaker coupling to speech regions.</p>
+                <div class="r-tags"><span>EEG-fMRI</span><span>Speech</span><span>Connectivity</span></div>
+            </div>
+        </article>
+        <article class="r-card">
+            <a class="r-fig" href="https://doi.org/10.3174/ajnr.A8206" target="_blank"><img src="assets/research/2024_ajnr_fig1.webp" alt="Study design figure: Sea-level brain predictors of acute mountain sickness" loading="lazy"></a>
+            <div class="r-body">
+                <div class="r-venue">American Journal of Neuroradiology &middot; 2024</div>
+                <h3><a href="https://doi.org/10.3174/ajnr.A8206" target="_blank">Sea-level brain predictors of acute mountain sickness</a></h3>
+                <p>Multimodal MRI before high-altitude exposure: somatomotor network function at sea level predicts who develops acute mountain sickness.</p>
+                <div class="r-tags"><span>Multimodal MRI</span><span>rs-fMRI</span><span>Prediction</span></div>
+            </div>
+        </article>
+        <article class="r-card">
+            <a class="r-fig" href="https://doi.org/10.3389/fnagi.2021.764272" target="_blank"><img src="assets/research/2021_fnagi_fig1.webp" alt="Study design figure: Deep learning on FDG-PET for uncertain Alzheimer&rsquo;s cases" loading="lazy"></a>
+            <div class="r-body">
+                <div class="r-venue">Frontiers in Aging Neuroscience &middot; 2021</div>
+                <h3><a href="https://doi.org/10.3389/fnagi.2021.764272" target="_blank">Deep learning on FDG-PET for uncertain Alzheimer&rsquo;s cases</a></h3>
+                <p>A 3D CNN trained on clear-cut cases resolves diagnostically uncertain memory-impairment cases from FDG-PET metabolism.</p>
+                <div class="r-tags"><span>FDG-PET</span><span>Deep Learning</span><span>Alzheimer&rsquo;s</span></div>
+            </div>
+        </article>
+        <article class="r-card">
+            <a class="r-fig" href="https://doi.org/10.1109/TMI.2024.3392988" target="_blank"><img src="assets/research/2024_tmi_fig1.webp" alt="Study design figure: Contrastive graph pooling for brain networks" loading="lazy"></a>
+            <div class="r-body">
+                <div class="r-venue">IEEE Transactions on Medical Imaging &middot; 2024</div>
+                <h3><a href="https://doi.org/10.1109/TMI.2024.3392988" target="_blank">Contrastive graph pooling for brain networks</a></h3>
+                <p>ContrastPool combines contrastive dual-attention with differentiable graph pooling for explainable fMRI brain-network classification.</p>
+                <div class="r-tags"><span>fMRI</span><span>GNN</span><span>Explainability</span></div>
+            </div>
+        </article>
+        <article class="r-card">
+            <a class="r-fig" href="https://doi.org/10.1109/JBHI.2026.3653025" target="_blank"><img src="assets/research/2026_jbhi_fig1.webp" alt="Study design figure: Decoding covert speech with a spatio-temporal transformer" loading="lazy"></a>
+            <div class="r-body">
+                <div class="r-venue">IEEE JBHI &middot; 2026</div>
+                <h3><a href="https://doi.org/10.1109/JBHI.2026.3653025" target="_blank">Decoding covert speech with a spatio-temporal transformer</a></h3>
+                <p>A functional-area-informed transformer tokenizes EEG by brain region and time to decode silent speech for non-invasive BCIs.</p>
+                <div class="r-tags"><span>EEG</span><span>Transformer</span><span>Speech BCI</span></div>
+            </div>
+        </article>
+        <article class="r-card">
+            <div class="r-fig r-wip"><i class="fas fa-comments"></i><span>In progress</span></div>
+            <div class="r-body">
+                <div class="r-venue">Ongoing project</div>
+                <h3>STARS-LLM: modeling mother-infant interaction</h3>
+                <p>LLM-based modeling of mother-infant interaction and neural coupling, extending dual-brain EEG toward developmental risk prediction and interpretable social AI.</p>
+                <div class="r-tags"><span>LLM</span><span>Dyadic Interaction</span><span>Development</span></div>
+            </div>
+        </article>
+        <article class="r-card">
+            <div class="r-fig r-wip"><i class="fas fa-person-walking"></i><span>In progress</span></div>
+            <div class="r-body">
+                <div class="r-venue">Ongoing project</div>
+                <h3>Lower-limb motor imagery and gait decoding</h3>
+                <p>EEG decoding of lower-limb motor imagery and imagined walking for non-invasive rehabilitation and BCI applications.</p>
+                <div class="r-tags"><span>EEG</span><span>Motor Imagery</span><span>Rehabilitation</span></div>
+            </div>
+        </article>
+    </div>
+</section>
+
 <section id="publications" class="reveal">
     <div class="sec-head"><h2>Selected Publications</h2></div>
 
@@ -623,7 +737,6 @@
         <div class="pub-title">Adult-to-infant unidirectional neural coupling mediates selective social learning in infants from the United Kingdom and Singapore</div>
         <div class="pub-meta"><span class="me">W. Zhang</span>, K. Clackson, S. Georgieva, L. Santamaria, V. Reindl, V. Noreika, N. Darby, V. Valsd&oacute;ttir, P. Santhanakrishnan, V. Leong*</div>
         <div class="pub-venue"><span class="venue-main">Nature Communications</span>, 2026 &middot; 17(1):7558</div>
-        <div class="pub-blurb">Unidirectional adult-to-infant neural coupling, modulated by eye contact, mediates selective learning of artificial language in infants across UK and Singapore &mdash; a better predictor than infants&rsquo; own neural activity.</div>
         <div class="pub-badges">
             <a href="assets/papers/2026_NatCommun_infant-neural-coupling.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
             <a href="https://doi.org/10.1038/s41467-026-75831-x" target="_blank"><i class="fas fa-link"></i> DOI</a>
@@ -634,7 +747,6 @@
         <div class="pub-title">Spatiotemporal encoding signatures of covert speech revealed by source-localized EEG and fMRI</div>
         <div class="pub-meta"><span class="me">W. Zhang</span>, M. Jiang, K.A.C. Teo, R. Bhuvanakantham, Z. Guo, S. Zhang, C.H.V. Foo, V. Leong, J. Lu, B. Guly&aacute;s, C. Guan*</div>
         <div class="pub-venue"><span class="venue-main">Communications Biology</span>, 2026 &middot; published online 6 Oct 2026</div>
-        <div class="pub-blurb">Source-localized EEG (n=57) with same-cohort fMRI validation maps where and when cortex encodes covert phrases: pre-articulatory theta-band encoding at 200&ndash;400 ms, convergent EEG&ndash;fMRI representations in left sensorimotor cortex, and individual-specific patterns exceeding group effects.</div>
         <div class="pub-badges">
             <a href="https://www.nature.com/articles/s42003-026-11102-1.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
             <a href="https://doi.org/10.1038/s42003-026-11102-1" target="_blank"><i class="fas fa-link"></i> DOI</a>
@@ -645,7 +757,6 @@
         <div class="pub-title">Revealing the spatiotemporal brain dynamics of covert speech compared with overt speech: A simultaneous EEG-fMRI study</div>
         <div class="pub-meta"><span class="me">W. Zhang</span>, M. Jiang, K.A.C. Teo, R. Bhuvanakantham, L.G. Fong, W.K.J. Sim, ...</div>
         <div class="pub-venue"><span class="venue-main">NeuroImage</span>, 2024 &middot; 293:120629</div>
-        <div class="pub-blurb">Simultaneous EEG-fMRI reveals covert speech activates left putamen earlier than overt speech, with weaker connectivity to speech regions &mdash; offering mechanistic insights for BCI speech applications.</div>
         <div class="pub-badges">
             <a href="assets/papers/2024_NeuroImage_covert-speech-eeg-fmri.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
             <a href="https://doi.org/10.1016/j.neuroimage.2024.120629" target="_blank"><i class="fas fa-link"></i> DOI</a>
@@ -656,7 +767,6 @@
         <div class="pub-title">Investigating sea-level brain predictors for acute mountain sickness: A multimodal MRI study</div>
         <div class="pub-meta"><span class="me">W. Zhang</span>, J. Feng, W. Liu, S. Zhang, X. Yu, J. Liu, B. Shan, L. Ma</div>
         <div class="pub-venue"><span class="venue-main">American Journal of Neuroradiology</span>, 2024 &middot; 45(6):809&ndash;818</div>
-        <div class="pub-blurb">Sea-level resting-state fMRI of somatomotor network function predicts acute mountain sickness at 3,650m with 86.4% accuracy, enabling pre-exposure screening.</div>
         <div class="pub-badges">
             <a href="assets/papers/2024_AJNR_acute-mountain-sickness.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
             <a href="https://doi.org/10.3174/ajnr.A8206" target="_blank"><i class="fas fa-link"></i> DOI</a>
@@ -667,7 +777,6 @@
         <div class="pub-title">Deep learning with <sup>18</sup>F-FDG-PET gives valid diagnoses for the uncertain cases in memory impairment of Alzheimer's disease</div>
         <div class="pub-meta"><span class="me">W. Zhang</span>, T. Zhang, T. Pan, S. Zhao, B. Nie, H. Liu, B. Shan, ...</div>
         <div class="pub-venue"><span class="venue-main">Frontiers in Aging Neuroscience</span>, 2021 &middot; 13:764272</div>
-        <div class="pub-blurb">Deep learning on FDG-PET achieves 95.65% accuracy on definitive cases and resolves uncertain diagnoses by identifying neurodegeneration vs. depression-related metabolic signatures.</div>
         <div class="pub-badges">
             <a href="assets/papers/2021_FrontAgingNeurosci_fdg-pet-deep-learning.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
             <a href="https://doi.org/10.3389/fnagi.2021.764272" target="_blank"><i class="fas fa-link"></i> DOI</a>
@@ -678,7 +787,6 @@
         <div class="pub-title">Contrastive Graph Pooling for Explainable Classification of Brain Networks</div>
         <div class="pub-meta">J. Xu, Q. Bian, X. Li, A. Zhang, Y. Ke, M. Qiao, <span class="me">W. Zhang</span>, W.K.J. Sim, B. Guly&aacute;s</div>
         <div class="pub-venue"><span class="venue-main">IEEE Transactions on Medical Imaging</span>, 2024 &middot; 43(9):3292&ndash;3305</div>
-        <div class="pub-blurb">ContrastPool combines contrastive dual-attention with differentiable graph pooling for fMRI-based brain network classification, with extracted patterns aligning with established neuroscience knowledge.</div>
         <div class="pub-badges">
             <a href="assets/papers/2024_TMI_contrastive-graph-pooling.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
             <a href="https://doi.org/10.1109/TMI.2024.3392988" target="_blank"><i class="fas fa-link"></i> DOI</a>
@@ -689,7 +797,6 @@
         <div class="pub-title">Decoding Covert Speech From EEG by Functional Areas Spatio-Temporal Transformer</div>
         <div class="pub-meta">M. Jiang, <span class="me">W. Zhang</span>, Y. Ding, K.A.C. Teo, L.G. Fong, S. Zhang, Z. Guo, C. Liu, R. Bhuvanakantham, W.K.J. Sim, ..., B. Guly&aacute;s, C. Guan</div>
         <div class="pub-venue"><span class="venue-main">IEEE Journal of Biomedical and Health Informatics</span>, 2026 &middot; 30(6):4974&ndash;4984</div>
-        <div class="pub-blurb">A functional-area-informed spatio-temporal transformer decodes covert speech from EEG, targeting the low signal-to-noise ratio that limits non-invasive speech BCIs.</div>
         <div class="pub-badges">
             <a href="assets/papers/2026_JBHI_covert-speech-transformer.pdf" target="_blank"><i class="fas fa-file-pdf"></i> PDF</a>
             <a href="https://doi.org/10.1109/JBHI.2026.3653025" target="_blank"><i class="fas fa-link"></i> DOI</a>
@@ -699,48 +806,6 @@
     <p class="pub-summary">
         Full list: <a href="https://scholar.google.com/citations?user=Kqc41x4AAAAJ" target="_blank">Google Scholar</a>
     </p>
-</section>
-
-<section id="projects" class="reveal">
-    <div class="sec-head"><h2>Research</h2></div>
-    <div class="research-grid">
-        <div class="r-card">
-            <h3>Covert Speech and Speech BCI</h3>
-            <div class="r-tags"><span>EEG-fMRI</span><span>EEG-to-Speech</span><span>BCI</span></div>
-            <p>Neural dynamics and decoding models for imagined/covert speech, spanning simultaneous EEG-fMRI, source-informed EEG, and transformer-based speech BCI datasets.</p>
-            <span class="r-paper">Communications Biology 2026 &middot; NeuroImage 2024 &middot; IEEE JBHI 2026</span>
-        </div>
-        <div class="r-card">
-            <h3>Infant Social Learning and Neural Coupling</h3>
-            <div class="r-tags"><span>Dual-Brain EEG</span><span>Infants</span><span>Social Gaze</span></div>
-            <p>Adult-to-infant unidirectional neural coupling and gaze-mediated learning across UK and Singapore cohorts, linking social attention to selective statistical learning.</p>
-            <span class="r-paper">Nature Communications &middot; 2026</span>
-        </div>
-        <div class="r-card">
-            <h3>STARS-LLM and Social AI Modeling</h3>
-            <div class="r-tags"><span>LLM</span><span>Dyadic Interaction</span><span>Development</span></div>
-            <p>LLM-based modeling of mother-infant interaction and neural coupling, extending dual-brain EEG work toward developmental risk prediction and interpretable social AI.</p>
-            <span class="r-paper">In progress</span>
-        </div>
-        <div class="r-card">
-            <h3>Lower-Limb Motor Imagery and Gait Decoding</h3>
-            <div class="r-tags"><span>EEG</span><span>Motor Imagery</span><span>Rehabilitation</span></div>
-            <p>EEG decoding of lower-limb motor imagery, imagined walking, and gait-related neural dynamics for non-invasive rehabilitation and BCI applications.</p>
-            <span class="r-paper">In progress</span>
-        </div>
-        <div class="r-card">
-            <h3>Brain Graph Neural Networks and Connectomics</h3>
-            <div class="r-tags"><span>fMRI</span><span>GNN</span><span>Explainability</span></div>
-            <p>Graph learning methods for brain-network classification, including contrastive graph pooling, multi-atlas fusion, and clinical connectomics surveys.</p>
-            <span class="r-paper">IEEE TMI &middot; 2024</span>
-        </div>
-        <div class="r-card">
-            <h3>Clinical Neuroimaging Biomarkers</h3>
-            <div class="r-tags"><span>PET</span><span>MRI/fMRI</span><span>Alzheimer's Disease</span></div>
-            <p>PET/MRI and multimodal imaging biomarkers for Alzheimer's disease, acute mountain sickness, obesity-related brain morphology, and scanner harmonization.</p>
-            <span class="r-paper">MRI/PET studies &middot; 2019-2024</span>
-        </div>
-    </div>
 </section>
 
 <section id="services" class="reveal">
